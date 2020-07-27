@@ -1,5 +1,7 @@
 import React from 'react';
+
 import axios from 'axios'; 
+import FilmItem from './FilmItem';
 
 export default class FilmList extends React.Component {
     constructor(props) {
@@ -10,6 +12,7 @@ export default class FilmList extends React.Component {
             isLoading: false
         };
     };
+
     componentDidMount() {
         axios.get(`https://ghibliapi.herokuapp.com/films/`)
         .then(
@@ -29,7 +32,7 @@ export default class FilmList extends React.Component {
         )
     }
 
-    render () {
+    render() {
         const { error, isLoading, films } = this.state;
         if ( error ) {
             return <h1>Erreur</h1>
@@ -39,13 +42,16 @@ export default class FilmList extends React.Component {
             return (
                 <div>
                     <h1>Les films</h1>
-                    <ul>
-                        { films.map((film) => 
-                            <li key={film.id}>
-                                {film.title}
-                            </li>
-                        )}
-                    </ul>
+                    { films.map((film) => 
+                        <FilmItem
+                            key={ film.id }
+                            title={ film.title }
+                            description={ film.description }
+                            director={ film.director }
+                            producer={ film.producer }
+                            releaseDate={ film.release_date }
+                        />
+                    )}
                 </div>
             )
         }
