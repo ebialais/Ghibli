@@ -42,13 +42,14 @@ export default class FilmList extends React.Component {
             return (
                 <div>
                     <h1>Les films</h1>
-                    { films.map((film) => 
+                    { films.map((film) =>
                         <FilmItem
                             key={ film.id }
+                            id={ film.id }
                             title={ film.title }
-                            description={ film.description }
-                            director={ film.director }
-                            producer={ film.producer }
+                            // description={ film.description }
+                            // director={ film.director }
+                            // producer={ film.producer }
                             releaseDate={ film.release_date }
                         />
                     )}
