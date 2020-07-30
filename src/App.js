@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
+import Home from './Layout/Home';
 import Films from './Layout/Films';
 import FilmItem from './Components/FilmItem';
 
@@ -16,7 +17,7 @@ function App() {
         </ul>
       </nav>
       <Switch>
-        <Route path='/' exact />
+        <Route path='/' exact render={()=><Home />} />
         <Route path='/Films' exact render={()=><Films />} />
         <Route path='/Films/:id' exact component={ FilmItem } />
       </Switch>
