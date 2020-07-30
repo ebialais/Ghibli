@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import Home from './Layout/Home';
 import Films from './Layout/Films';
-import FilmItem from './Components/FilmItem';
+import FilmVignette from './Components/FilmVignette';
 
 import './App.css';
 
@@ -19,7 +19,7 @@ function App() {
       <Switch>
         <Route path='/' exact render={()=><Home />} />
         <Route path='/Films' exact render={()=><Films />} />
-        <Route path='/Films/:id' exact component={ FilmItem } />
+        <Route path='/Films/:id' exact component={ FilmVignette } />
       </Switch>
     </Router>
   );

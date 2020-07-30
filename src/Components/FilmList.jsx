@@ -2,6 +2,7 @@ import React from 'react';
 
 import axios from 'axios'; 
 import FilmItem from './FilmItem';
+import { Link } from 'react-router-dom';
 
 export default class FilmList extends React.Component {
     constructor(props) {
@@ -42,17 +43,21 @@ export default class FilmList extends React.Component {
             return (
                 <div>
                     <h1>Les films</h1>
-                    { films.map((film) =>
-                        <FilmItem
-                            key={ film.id }
-                            id={ film.id }
-                            title={ film.title }
-                            // description={ film.description }
-                            // director={ film.director }
-                            // producer={ film.producer }
-                            releaseDate={ film.release_date }
-                        />
-                    )}
+                    <ul>
+                        { films.map((film) =>
+                            <Link to={`/Films/${ film.id }`}>  
+                                <FilmItem
+                                    key={ film.id }
+                                    id={ film.id }
+                                    title={ film.title }
+                                    description={ film.description }
+                                    director={ film.director }
+                                    producer={ film.producer }
+                                    releaseDate={ film.release_date }
+                                />
+                            </Link>
+                        )}
+                    </ul>
                 </div>
             )
         }
